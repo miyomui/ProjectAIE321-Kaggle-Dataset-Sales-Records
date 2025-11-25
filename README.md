@@ -39,14 +39,14 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 .
 ├── data/                   # โฟลเดอร์เก็บไฟล์ CSV (Source)
 │   └── 100000 Sales Records.csv
-├── docker-compose.yml      # การตั้งค่า Docker สำหรับ PostgreSQL
-├── ingest.py               # สคริปต์นำเข้าข้อมูลเข้า PostgreSQL
-├── transform.py            # สคริปต์แปลงข้อมูลและคำนวณค่าต่างๆ
-├── publish.py              # สคริปต์ส่งข้อมูลขึ้น Google Sheets
-├── run_pipeline.py         # **Main Script** สำหรับรันทุกขั้นตอนอัตโนมัติ
-├── requirements.txt        # รายชื่อ Library ที่ต้องใช้
-├── README.md               # เอกสารอธิบายโปรเจค
-└── .gitignore              # ไฟล์สำหรับละเว้นไฟล์ที่ไม่ต้องการขึ้น Git (เช่น credentials)
+├── .gitignore              # ไฟล์สำหรับสั่ง Git ให้มองข้ามไฟล์ขยะและไฟล์ความลับ
+├── docker-compose.yml      # การตั้งค่า Docker สำหรับจำลอง Database
+├── ingest.py               # สคริปต์ Step 1: นำเข้าข้อมูล CSV ลง Database
+├── publish.py              # สคริปต์ Step 3: ส่งข้อมูลที่สรุปแล้วขึ้น Google Sheets
+├── README.md               # เอกสารคู่มือการใช้งานโปรเจคนี้
+├── requirements.txt        # รายชื่อ Library Python ที่ต้องติดตั้ง
+├── run_pipeline.py         # สคริปต์หลัก (Main) สำหรับสั่งรันทั้งระบบอัตโนมัติ
+└── transform.py            # สคริปต์ Step 2: ทำความสะอาดและแปลงข้อมูล
 ```
 
 ## ⚙️ Setup & Usage
