@@ -107,7 +107,7 @@ pip install -r requirements.txt
 ```bash
 docker-compose up -d
 ```
-**Step 4.1: เริ่มรัน Pipeline (Execution)**
+**Step 4.2: เริ่มรัน Pipeline (Execution)**
 ```bash
 cd src
 python run_pipeline.py
