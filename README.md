@@ -146,7 +146,8 @@ python run_pipeline.py
 ---
 ### 📊 Dashboard Showcase
 
-👉 **Looker Studio Dashboard:** [100,000 Sales Records](https://lookerstudio.google.com/u/0/reporting/a1ca0ea0-2643-40ac-81f7-a1a20937cd24/page/JGqgF) 
+👉 **Looker Studio Dashboard:** [ProjectAIE321 Kaggle Dataset Sales Records
+](https://lookerstudio.google.com/reporting/a1ca0ea0-2643-40ac-81f7-a1a20937cd24) 
 
 ![Dashboard Preview](images/1.jpg)
 ![Dashboard Preview](images/2.jpg)
