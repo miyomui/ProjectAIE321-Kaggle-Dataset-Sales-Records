@@ -20,12 +20,28 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 ---
 
 ### 🛠️ Architecture & Tech Stack
-
+**Data Pipeline Flow:**
+```mermaid
+graph LR
+    A[📄 CSV File<br>(Kaggle Source)] -->|Ingest| B(🐍 src/ingest.py)
+    B -->|Save Raw Data| C[(🐘 PostgreSQL<br>Docker)]
+    C -->|Read & Clean| D(🐍 src/transform.py)
+    D -->|Save Cleaned Data| C
+    C -->|Query Data| E(🐍 src/publish.py)
+    E -->|Upload API| F[☁️ Google Cloud<br>(Google Sheets)]
+    F -->|Connect| G[📈 Looker Studio<br>Dashboard]
+    
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style C fill:#6db,stroke:#333,stroke-width:2px
+    style F fill:#fff,stroke:#333,stroke-width:2px
+    style G fill:#ff9,stroke:#333,stroke-width:2px
+```   
 
 * **Source:** CSV File (Kaggle Dataset)
 * **Language:** Python 3.9+
 * **Containerization:** Docker & Docker Compose
 * **Database:** PostgreSQL (Run on Docker)
+* **Cloud & Storage:** Google Sheets (บน Google Cloud Platform)
 * **Libraries:**
     * `pandas` (Data Manipulation)
     * `sqlalchemy` / `psycopg2` (Database Connection)
