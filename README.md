@@ -21,7 +21,9 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 
 ### 🛠️ Architecture & Tech Stack
 
-<img src="images/flowchart_new.png" alt="Data Pipeline Flow" width="400">
+<div align="center">
+  <img src="images/flowchart_new.png" alt="Data Pipeline Flow" width="350">
+</div>
 
 * **Source:** CSV File (Kaggle Dataset)
 * **Language:** Python 3.9+
