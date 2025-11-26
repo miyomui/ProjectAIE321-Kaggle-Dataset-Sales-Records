@@ -148,8 +148,11 @@ python run_pipeline.py
 
 👉 **Looker Studio Dashboard:** [100,000 Sales Records](https://lookerstudio.google.com/u/0/reporting/a1ca0ea0-2643-40ac-81f7-a1a20937cd24/page/JGqgF) 
 
-![Dashboard Preview](images/test.png)
-
+![Dashboard Preview](images/1.jpg)
+![Dashboard Preview](images/2.jpg)
+![Dashboard Preview](images/3.jpg)
+![Dashboard Preview](images/4.jpg)
+![Dashboard Preview](images/5.jpg)
 ---
 
 ### 👥 Team Members
