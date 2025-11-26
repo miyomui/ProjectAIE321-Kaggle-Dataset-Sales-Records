@@ -18,26 +18,6 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 หรือไม่?**
 
 ---
-
-### 🛠️ Architecture & Tech Stack
-
-<div align="center">
-  <img src="images/flowchart_new.png" alt="Data Pipeline Flow" width="350">
-</div>
-
-* **Source:** CSV File (Kaggle Dataset)
-* **Language:** Python 3.9+
-* **Containerization:** Docker & Docker Compose
-* **Database:** PostgreSQL (Run on Docker)
-* **Cloud & Storage:** Google Sheets (บน Google Cloud Platform)
-* **Libraries:**
-    * `pandas` (Data Manipulation)
-    * `sqlalchemy` / `psycopg2` (Database Connection)
-    * `gspread` / `oauth2client` (Google Sheets API)
-* **Visualization:** Google Looker Studio
-
----
-
 ### 📂 Project Structure
 
 ```text
@@ -55,12 +35,39 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 ├── README.md
 └── requirements.txt
 ```
+---
+
+### 🛠️ Architecture & Tech Stack
+### 1. Workflow Diagram
+
+<div align="center">
+  <img src="images/flowchart_new.png" alt="Data Pipeline Flow" width="350">
+</div>
+
+### 2. Tech Stack
+* **Source:** CSV File (Kaggle Dataset)
+* **Language:** Python 3.9+
+* **Containerization:** Docker & Docker Compose
+* **Database:** PostgreSQL (Run on Docker)
+* **Cloud & Storage:** Google Sheets (บน Google Cloud Platform)
+* **Libraries:**
+    * `pandas` (Data Manipulation)
+    * `sqlalchemy` / `psycopg2` (Database Connection)
+    * `gspread` / `oauth2client` (Google Sheets API)
+* **Visualization:** Google Looker Studio
+
+### 3. API Setup Strategy
+* **Authentication:**
+    * เราใช้ **Google Service Account** (เปรียบเสมือน Robot User) แทนการใช้บัญชี Gmail ส่วนตัว เพื่อความปลอดภัยและการแยกสิทธิ์การเข้าถึงที่ชัดเจน
+* **Access Control:**
+    * Service Account จะเข้าถึงได้เฉพาะ Google Sheet ที่ถูกแชร์ให้เท่านั้น (Principle of Least Privilege)
+* **Security:**
+    * ไฟล์กุญแจ `credentials.json` จะถูกเก็บไว้ในเครื่อง Local เท่านั้น และถูกระบุใน `.gitignore` เพื่อป้องกันไม่ให้หลุดขึ้นสู่ Public Repository
+
 
 ---
 
 ### ⚙️ Setup & Usage
-
-ส่วนนี้จะอธิบายขั้นตอนอย่างละเอียดในการรันโปรเจคบนเครื่อง Local (Computer ของคุณ)
 
 ### 1. Prerequisites
 ก่อนเริ่มใช้งาน ต้องติดตั้งโปรแกรมเหล่านี้ในเครื่องก่อน:
@@ -68,7 +75,7 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 * **[Python 3.9+](https://www.python.org/downloads/)**: ภาษาหลักที่ใช้เขียนโค้ด
 * **[Git](https://git-scm.com/downloads)**: สำหรับจัดการเวอร์ชันโค้ด
 ---
-### 2. เตรียมโปรเจค (Setup Project)
+### 2. Setup Project
 
 **Step 2.1: Clone Repository**
 เปิด Terminal (หรือ CMD/PowerShell) แล้วพิมพ์คำสั่งดังนี้:
@@ -80,11 +87,11 @@ cd [ชื่อโฟลเดอร์โปรเจค]
 
 **Step 2.2: ตั้งค่า Google Credentials**
 1. เตรียมไฟล์ `credentials.json` (ที่ได้จากการสร้าง Service Account ใน Google Cloud Console)
-2. นำมาวางไว้ที่ **Root Directory** (โฟลเดอร์นอกสุด ชั้นเดียวกับไฟล์ `run_pipeline.py`)
+2. นำมาวางไว้ที่ **Root Directory**
 3. **สำคัญ:** อย่าลืมกด Share ไฟล์ Google Sheets ปลายทาง ให้กับอีเมลของ Service Account (`client_email` ในไฟล์ JSON)
 ---
 
-### 3. ตั้งค่าสภาพแวดล้อม (Environment Setup)
+### 3. Environment Setup
 
 **Step 3.1: สร้าง Virtual Environment**
 เพื่อแยก Library ของโปรเจคนี้ออกจากโปรเจคอื่นในเครื่อง
@@ -105,7 +112,7 @@ pip install -r requirements.txt
 ```
 ---
 
-### 4. รันฐานข้อมูล (Launch Database)
+### 4. Launch Database
 
 **Step 4.1: Docker Compose** เพื่อสร้าง PostgreSQL Database ขึ้นมา
 ```bash
@@ -133,7 +140,7 @@ python run_pipeline.py
   อัปโหลดข้อมูลไป Google Sheets  
   Output: `Successfully uploaded data to Google Sheets.`
 
-✅ เสร็จสิ้น สามารถตรวจสอบผลลัพธ์ได้ที่: `Google Sheets`, `Looker Studio`
+✅ เสร็จสิ้น สามารถตรวจสอบผลลัพธ์ได้ที่: `Google Sheets` และสามารถสร้างกราฟที่ `Looker Studio`
 
 
 ---
