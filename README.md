@@ -144,6 +144,6 @@ python run_pipeline.py
 ### 👥 Team Members
 | Student ID  | Name                      | GitHub                          |
 |:-----------:|:-------------------------:|:--------------------------------:|
-| 1660903640  | Lalitwadee Wongkoon       | [miyomui](https://github.com/miyomui)      |
-| 1660904226  | Jeeranan Sena             | [Granxn](https://github.com/Granxn)       |
-| 1660902741  | Suttiwat Thiwatthanawan   | [sutivat](https://github.com/sutivat)      |
+| 1660903640  | Ms. Lalitawadee Wongkhun       | [miyomui](https://github.com/miyomui)      |
+| 1660904226  | Ms. Jeeranan Sena             | [Granxn](https://github.com/Granxn)       |
+| 1660902741  | Mr. Sutivat Thiwatkhanawan   | [sutivat](https://github.com/sutivat)      |
