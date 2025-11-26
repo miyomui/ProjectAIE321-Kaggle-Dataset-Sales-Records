@@ -3,6 +3,7 @@ from sqlalchemy import create_engine
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
@@ -20,16 +21,15 @@ def publish_data():
         # 2. อ่านข้อมูลจาก Schema 'production'
         logging.info("📥 Fetching cleaned data from production.sales_data...")
         
-        # ดึงมา 5,000 แถวเพื่อความรวดเร็ว
-        query = "SELECT * FROM production.sales_data LIMIT 5000" 
+        # ดึงมาทุกแถว
+        query = "SELECT * FROM production.sales_data" 
         df = pd.read_sql(query, engine)
 
         if df.empty:
             logging.warning("⚠️ No data found in production table!")
             return False
 
-        # 3. แปลงวันที่เป็น String (สำคัญ! Google Sheets API ไม่รับ Date Object)
-        # แปลงทั้ง 2 คอลัมน์วันที่
+        # 3. แปลงวันที่เป็น String
         if 'Order_Date' in df.columns:
             df['Order_Date'] = df['Order_Date'].astype(str)
         if 'Ship_Date' in df.columns:
@@ -39,12 +39,23 @@ def publish_data():
         logging.info(f"🔗 Connecting to Google Sheet: {SHEET_NAME}")
         scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
         
-        creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+    
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        creds_path = os.path.join(project_root, 'credentials.json')
+
+        if not os.path.exists(creds_path):
+             logging.error(f"❌ Credentials file not found at: {creds_path}")
+             return False
+             
+        creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
         client = gspread.authorize(creds)
+
+        # ---------------------------------------------------------
 
         # 5. อัปโหลดข้อมูล
         sheet = client.open(SHEET_NAME).sheet1
-        sheet.clear() # ล้างข้อมูลเก่า
+        sheet.clear()
         
         # เตรียมข้อมูล (Header + Rows)
         data = [df.columns.values.tolist()] + df.values.tolist()

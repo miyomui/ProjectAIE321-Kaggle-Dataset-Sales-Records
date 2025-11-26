@@ -13,11 +13,16 @@ def ingest_data():
         # 1. เชื่อมต่อ Database
         db_conn = 'postgresql://postgres:mysecretpassword@localhost:5432/sales_db'
         engine = create_engine(db_conn)
+        
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        project_root = os.path.dirname(current_dir)
+        csv_path = os.path.join(project_root, 'data', '100000 Sales Records.csv')
 
-        # 2. อ่านไฟล์ CSV
-        csv_path = 'data/100000 Sales Records.csv'
+        # ---------------------------------------------------------
+
         if not os.path.exists(csv_path):
             logging.error(f"❌ File not found: {csv_path}")
+            logging.error(f"   (Looking at: {csv_path})")
             return False
 
         df = pd.read_csv(csv_path)

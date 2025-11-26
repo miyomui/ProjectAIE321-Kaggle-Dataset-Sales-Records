@@ -25,7 +25,7 @@ def transform_data():
 
         # --- Data Cleansing ---
         logging.info("🧹 Cleaning data...")
-        df = df.drop_duplicates() # ลบข้อมูลซ้ำ
+        df = df.drop_duplicates()
         
         # แปลงวันที่
         df['Order_Date'] = pd.to_datetime(df['Order_Date'], errors='coerce')
