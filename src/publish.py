@@ -8,7 +8,7 @@ import os
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 
 # --- ชื่อ Google Sheet ของคุณ ---
-SHEET_NAME = 'My Sales Dashboard' 
+SHEET_NAME = 'ProjectAIE321 Kaggle Dataset Sales Records' 
 
 def publish_data():
     try:
