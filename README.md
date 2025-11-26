@@ -21,20 +21,22 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 
 ### 🛠️ Architecture & Tech Stack
 **Data Pipeline Flow:**
-```mermaid
-graph LR
-    A[📄 CSV File<br>(Kaggle Source)] -->|Ingest| B(🐍 src/ingest.py)
-    B -->|Save Raw Data| C[(🐘 PostgreSQL<br>Docker)]
-    C -->|Read & Clean| D(🐍 src/transform.py)
-    D -->|Save Cleaned Data| C
-    C -->|Query Data| E(🐍 src/publish.py)
-    E -->|Upload API| F[☁️ Google Cloud<br>(Google Sheets)]
-    F -->|Connect| G[📈 Looker Studio<br>Dashboard]
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#6db,stroke:#333,stroke-width:2px
-    style F fill:#fff,stroke:#333,stroke-width:2px
-    style G fill:#ff9,stroke:#333,stroke-width:2px
+```flowchart TB
+    A["CSV File<br>(Kaggle Source)"] -- Ingest --> B("src/ingest.py")
+    B -- Save Raw Data --> C[("PostgreSQL<br>Docker")]
+    C -- Read & Clean --> D("src/transform.py")
+    D -- Save Cleaned Data --> C
+    C -- Query Data --> E("src/publish.py")
+    E -- Upload API --> F["Google Cloud<br>(Google Sheets)"]
+    F -- Connect --> G["Looker Studio<br>Dashboard"]
+
+    style A fill:#FBE7C6,stroke:#D4A373,stroke-width:2px,color:#555
+    style B fill:#E6E6FA,stroke:#B39DDB,stroke-width:2px,color:#555
+    style C fill:#CCE5FF,stroke:#99C2FF,stroke-width:2px,color:#555
+    style D fill:#E6E6FA,stroke:#B39DDB,stroke-width:2px,color:#555
+    style E fill:#E6E6FA,stroke:#B39DDB,stroke-width:2px,color:#555
+    style F fill:#FFD1DC,stroke:#FF99AC,stroke-width:2px,color:#555
+    style G fill:#FFFACD,stroke:#F4E182,stroke-width:2px,color:#555
 ```   
 
 * **Source:** CSV File (Kaggle Dataset)
