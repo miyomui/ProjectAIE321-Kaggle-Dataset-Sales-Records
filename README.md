@@ -149,11 +149,9 @@ python run_pipeline.py
 👉 **Looker Studio Dashboard:** [ProjectAIE321 Kaggle Dataset Sales Records
 ](https://lookerstudio.google.com/reporting/a1ca0ea0-2643-40ac-81f7-a1a20937cd24) 
 
-![Dashboard Preview](images/1.jpg)
-![Dashboard Preview](images/2.jpg)
-![Dashboard Preview](images/3.jpg)
-![Dashboard Preview](images/4.jpg)
-![Dashboard Preview](images/5.jpg)
+![Dashboard Preview](images/0001.jpg)
+![Dashboard Preview](images/0002.jpg)
+
 ---
 
 ### 👥 Team Members
