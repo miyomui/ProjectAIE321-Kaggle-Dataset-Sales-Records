@@ -57,7 +57,6 @@ def publish_data():
         sheet = client.open(SHEET_NAME).sheet1
         sheet.clear()
         
-        # เตรียมข้อมูล (Header + Rows)
         data = [df.columns.values.tolist()] + df.values.tolist()
         sheet.update(data)
 

@@ -10,7 +10,7 @@ def ingest_data():
     try:
         logging.info("🚀 Starting Ingestion Process...")
 
-        # 1. เชื่อมต่อ Database
+        # เชื่อมต่อ Database
         db_conn = 'postgresql://postgres:mysecretpassword@localhost:5432/sales_db'
         engine = create_engine(db_conn)
         
@@ -28,10 +28,10 @@ def ingest_data():
         df = pd.read_csv(csv_path)
         logging.info(f"📄 Read {len(df)} rows from CSV.")
 
-        # 3. แก้ชื่อคอลัมน์ (ลบช่องว่าง)
+        # แก้ชื่อคอลัมน์ (ลบช่องว่าง)
         df.columns = [c.strip().replace(' ', '_') for c in df.columns]
 
-        # 4. นำเข้าข้อมูลสู่ Table 'raw_sales'
+        # นำเข้าข้อมูลสู่ Table 'raw_sales'
         # if_exists='replace' คือถ้ามีตารางเก่าให้ลบทิ้งแล้วสร้างใหม่
         df.to_sql('raw_sales', engine, if_exists='replace', index=False, chunksize=5000)
         
