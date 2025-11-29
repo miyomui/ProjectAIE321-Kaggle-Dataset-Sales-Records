@@ -137,7 +137,7 @@ python run_pipeline.py
   Output: `Data transformation complete. Summary dataframe created.`
 
 - ⏳ **Step 3: Publish**  
-  อัปโหลดข้อมูลไป Google Sheets  
+  อัปโหลดข้อมูลขึ้นไป Google Sheets  
   Output: `Successfully uploaded data to Google Sheets.`
 
 ✅ เสร็จสิ้น สามารถตรวจสอบผลลัพธ์ได้ที่: `Google Sheets` และสามารถสร้างกราฟที่ `Looker Studio`
