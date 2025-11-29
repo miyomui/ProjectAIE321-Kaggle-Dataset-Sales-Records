@@ -37,7 +37,7 @@ Dashboard ของเราถูกออกแบบมาเพื่อต�
 ```
 ---
 
-### 🛠️ Architecture & Tech Stack
+### ⭐ Architecture & Tech Stack
 ### 1. Workflow Diagram
 
 <div align="center">
